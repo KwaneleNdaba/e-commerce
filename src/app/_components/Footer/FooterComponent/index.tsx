@@ -51,7 +51,8 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
             <div className={classes.socilaLinks}>
               {
                 navItems.map((item) => {
-                  const icon = ""
+                  const icon = item?.link?.icon as Media //we added the icon by modifying the _graphql/link by adding the icons object and url as a property
+                  //and then after that we modified the payload/fields/links under  linkResult.fields , where we specify that our fields should have what properties
 
                   return(
                     <Button
@@ -61,7 +62,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
                      newTab = {true}
                      className={classes.socilaLinkItem}
                     >
-                      {item.link.label}
+                      <Image src = {icon?.url} alt = {item.link.label} width ={24} height={24} className={classes.socialIcon} />
 
                     </Button>
                   )
