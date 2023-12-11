@@ -9,8 +9,10 @@ import { CartLink } from '../../CartLink'
 import { CMSLink } from '../../Link'
 
 import classes from './index.module.scss'
+import { Header } from 'next/dist/lib/load-custom-routes'
+import { Button } from '../../Button'
 
-export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
+export const HeaderNav: React.FC<{ header: HeaderType | Header | any }> = ({ header }) => {
   const navItems = header?.navItems || []
   const { user } = useAuth()
 
@@ -18,8 +20,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
     <nav
       className={[
         classes.nav,
-        // fade the nav in on user load to avoid flash of content and layout shift
-        // Vercel also does this in their own website header, see https://vercel.com
         user === undefined && classes.hide,
       ]
         .filter(Boolean)
@@ -30,12 +30,13 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       })}
       <CartLink />
       {user && <Link href="/account">Account</Link>}
-      {!user && (
-        <React.Fragment>
-          <Link href="/login">Login</Link>
-          <Link href="/create-account">Create Account</Link>
-        </React.Fragment>
-      )}
+      {!user && <Button 
+      el = "link"
+      href = "/login"
+      label = "login"
+      appearance='primary'
+      onClick={() => window.location.href = "/login"}
+      />}
     </nav>
   )
 }
