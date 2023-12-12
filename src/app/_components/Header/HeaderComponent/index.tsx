@@ -15,7 +15,7 @@ function HeaderComponent({header}:{header : Header | null}) {
   const pathname = usePathname()
 
   return (
-    <nav className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide].filter(Boolean).join(" ")}>/{/*we hide the header when we routes to the noHeaderFooterUrls*/}
+    <nav className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide].filter(Boolean).join(" ")}>{/*we hide the header when we routes to the noHeaderFooterUrls*/}
         <Gutter className = {classes.wrap}>
             <Link href = "/">
                 <img src = "/logo-black.svg" alt = "logo" width = {170} height = {70}/>
