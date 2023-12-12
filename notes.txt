@@ -1,0 +1,11 @@
+how we added a custom hero
+
+first create a folder and relevant pages inside the folder
+
+//components/heros
+add the custom hero under the array of heros
+//payload/fields
+add additional fields of custom hero
+and also the condtions 
+//payload-types
+under thae page interface, add the customHero
