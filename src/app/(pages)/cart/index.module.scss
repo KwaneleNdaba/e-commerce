@@ -1,5 +1,10 @@
 @use '../../_css/common.scss' as *;
 
-.message {
-  margin-bottom: calc(var(--base) * 1.5);
+.containe{
+  width: 100%;
+  margin-top: 50px;
+  @include small-break{
+   margin-top: 30px; 
+  }
 }
+
